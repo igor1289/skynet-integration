@@ -1,0 +1,35 @@
+#dialog start
+Be careful!
+Monsters roaming here
+
+#option what_they_looking_for
+What they looking for?
+
+#option how_many
+How many monsters here?
+
+#dialog what_they_looking_for
+I don't know.
+I hid here when they came in
+Help me. Defeat the monsters, and I'll give you reward!
+
+#dialog how_many
+At least two
+One here and a bigger one behind the door
+
+
+#dialog safe_now
+Thank you! Here is safe now
+
+#option reward first_quest not_rewarded
+How about reward?
+
+#option ring
+What do you know about this ring?
+
+#dialog reward
+This healing potion can help you
+#action first_quest reward
+
+#dialog ring
+This is the Ring of Power

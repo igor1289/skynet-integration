@@ -1,0 +1,21 @@
+public id = "first_quest"
+
+global boss_defeated = false
+global rewarded = false
+
+def defeat_boss()
+    boss_defeated = true
+end
+
+def completed()
+    return boss_defeated
+end
+
+def reward()
+    give_item("Healing Potion", 1)
+    rewarded = true
+end
+
+def not_rewarded()
+    return not rewarded
+end

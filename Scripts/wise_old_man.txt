@@ -1,0 +1,5 @@
+def on_after_spawn(thisObject)
+    if(quest_action("first_quest", "completed"))
+        npc_set_dialog_id(thisObject, "safe_now")
+    end
+end

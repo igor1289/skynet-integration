@@ -1,0 +1,20 @@
+global chest_opened = false
+
+def on_before_open()
+    return check_item("Chest Key")
+end
+
+def on_after_open()
+    take_item("Chest Key", 1)
+    give_item("Gold", 100)
+    give_item("Key", 1)
+    chest_opened = true
+end
+
+def on_create(objectHandle)
+    set_chest_state(objectHandle, chest_opened)
+end
+
+def on_update(objectHandle)
+    //...Какой-то код
+end

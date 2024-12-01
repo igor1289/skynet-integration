@@ -1,0 +1,9 @@
+global opened = false
+
+def on_after_open()
+    opened = true
+end
+
+def on_create(objectHandle)
+    set_door_state(objectHandle, opened)
+end

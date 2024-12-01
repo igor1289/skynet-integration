@@ -1,0 +1,55 @@
+const SPEED = 3
+const IS_ENEMY = 1
+const ATTACK_DAMAGE = 3
+
+const MIN_PATROL_DISTANCE = 5
+const MAX_PATROL_DISTANCE = 10
+const MIN_ALERT_DISTANCE = 5
+
+def on_before_spawn(thisObject)
+    return not quest_action("first_quest", "completed")
+end
+
+def on_after_spawn(thisObject)
+    npc_set_speed(thisObject, SPEED)
+    npc_set_relation(thisObject, IS_ENEMY)
+    npc_set_attack_damage(thisObject, ATTACK_DAMAGE)
+end
+
+def state_idle(thisObject)
+    npc_set_state(thisObject, "patrol")
+end
+
+def state_patrol(thisObject)
+    if(not npc_is_moving(thisObject))
+        local direction = math_rand(0, 4) * 90
+        local distance = math_rnd(MIN_PATROL_DISTANCE, MAX_PATROL_DISTANCE)
+        local x = math_cos(direction)*distance
+        local y = math_sin(direction)*distance
+
+        npc_move(thisObject, x, y)
+    end
+
+    local distance_to_player = npc_get_distance_to_player(thisObject)
+
+    if(distance_to_player < MIN_ALERT_DISTANCE)
+        npc_set_state(thisObject, "chase")
+    end
+end
+
+def state_chase(thisObject)
+    npc_move_towards_player(thisObject)
+end
+
+def reward()
+    local items = ["Gold", "Gem", "Healing Potion"]
+    local items_quantity = [100, 1, 1]
+
+    local item_index = math_rand(0, 2)
+
+    give_item(items[item_index], items_quantity[item_index])
+end
+
+def on_die()
+    reward()
+end

@@ -1,0 +1,11 @@
+def on_before_open()
+    return check_item("Key")
+end
+
+def on_create(objectHandle)
+    //...Какой-то код
+end
+
+def on_update(objectHandle)
+    //...Какой-то код
+end

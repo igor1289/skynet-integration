@@ -1,0 +1,26 @@
+dialog village_chief_start
+msg Hey kid! Be careful outside!
+msg People have seen monsters lurking near the village
+
+option            What do they want?
+option_dialog     village_chief_what
+
+option            Where did they came from
+option_dialog     village_chief_where
+
+dialog village_chief_what
+msg Maybe they will tell you before eat you alive
+msg (What a stupid questions)
+
+dialog village_chief_where
+msg They came from the cave on the east
+
+
+
+
+
+
+
+
+
+
